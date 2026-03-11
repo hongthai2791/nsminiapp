@@ -138,6 +138,34 @@ imageInput.addEventListener('change', (e) => {
 generateBtn.addEventListener('click', () => {
   if (!cropper) return;
 
+  // =====================================================================
+  // ẢNH PHÔI CỦA BẠN CÓ KÍCH THƯỚC MẶC ĐỊNH LÀ 1080x1080
+  // HÃY THAY ĐỔI CÁC THÔNG SỐ DƯỚI ĐÂY ĐỂ CĂN CHỈNH CHO KHỚP VỚI PHÔI
+  // =====================================================================
+  const CONFIG = {
+    avatar: {
+      x: 240,      // Vị trí X của avatar (từ trái sang)
+      y: 240,      // Vị trí Y của avatar (từ trên xuống)
+      width: 600,  // Chiều rộng của avatar trên phôi
+      height: 600, // Chiều cao của avatar trên phôi
+      // NẾU PHÔI CỦA BẠN LÀ FILE PNG CÓ LỖ TRONG SUỐT Ở GIỮA -> Đổi thành true
+      // NẾU PHÔI CỦA BẠN LÀ FILE JPG BÌNH THƯỜNG -> Để là false
+      drawBehind: false 
+    },
+    name: {
+      x: 540,      // Vị trí X của Tên (540 là ở giữa ảnh 1080)
+      y: 880,      // Vị trí Y của Tên (từ trên xuống)
+      font: "bold 48px Arial",
+      color: "#ffffff"
+    },
+    className: {
+      x: 540,      // Vị trí X của Lớp
+      y: 950,      // Vị trí Y của Lớp
+      font: "bold 36px Arial",
+      color: "#facc15" // Màu vàng
+    }
+  };
+
   // Change button state
   const originalText = generateBtn.innerHTML;
   generateBtn.innerHTML = '<i data-lucide="loader-2" class="mr-2 w-5 h-5 animate-spin"></i> Đang xử lý...';
@@ -146,15 +174,15 @@ generateBtn.addEventListener('click', () => {
 
   // Get cropped canvas
   const croppedCanvas = cropper.getCroppedCanvas({
-    width: 600,
-    height: 600,
+    width: CONFIG.avatar.width,
+    height: CONFIG.avatar.height,
     imageSmoothingEnabled: true,
     imageSmoothingQuality: 'high',
   });
 
   // Load template
   const templateImg = new Image();
-  templateImg.src = './template.jpg'; 
+  templateImg.src = './template.jpg'; // Nếu dùng PNG, hãy đổi tên file này thành template.png
   templateImg.crossOrigin = 'anonymous';
 
   templateImg.onload = () => {
@@ -163,26 +191,40 @@ generateBtn.addEventListener('click', () => {
     finalCanvas.height = 1080;
     const ctx = finalCanvas.getContext('2d');
 
-    // Draw template first
-    ctx.drawImage(templateImg, 0, 0, 1080, 1080);
-    
-    // Draw cropped user image on top (centered, 600x600)
-    // Adjust these coordinates based on your actual template.jpg design
-    ctx.drawImage(croppedCanvas, 240, 240, 600, 600);
+    if (CONFIG.avatar.drawBehind) {
+      // Vẽ avatar trước, phôi đè lên sau (Giúp avatar không bị trồi ra khỏi khung)
+      ctx.drawImage(croppedCanvas, CONFIG.avatar.x, CONFIG.avatar.y, CONFIG.avatar.width, CONFIG.avatar.height);
+      ctx.drawImage(templateImg, 0, 0, 1080, 1080);
+    } else {
+      // Vẽ phôi trước, avatar đè lên sau
+      ctx.drawImage(templateImg, 0, 0, 1080, 1080);
+      ctx.drawImage(croppedCanvas, CONFIG.avatar.x, CONFIG.avatar.y, CONFIG.avatar.width, CONFIG.avatar.height);
+    }
 
-    // Draw the user's name on the image
+    // Vẽ Họ và tên
     const fullName = document.getElementById('fullName').value.trim();
     if (fullName) {
-      ctx.font = "bold 48px Arial";
-      ctx.fillStyle = "#ffffff"; // White text, change if needed
+      ctx.font = CONFIG.name.font;
+      ctx.fillStyle = CONFIG.name.color;
       ctx.textAlign = "center";
       ctx.textBaseline = "middle";
-      
-      // Thêm viền chữ (stroke) để chữ nổi bật hơn trên mọi nền ảnh
       ctx.lineWidth = 4;
       ctx.strokeStyle = "#000000";
-      ctx.strokeText(fullName.toUpperCase(), 540, 900); // Tọa độ (x=540, y=900) - có thể điều chỉnh
-      ctx.fillText(fullName.toUpperCase(), 540, 900);
+      ctx.strokeText(fullName.toUpperCase(), CONFIG.name.x, CONFIG.name.y);
+      ctx.fillText(fullName.toUpperCase(), CONFIG.name.x, CONFIG.name.y);
+    }
+
+    // Vẽ Lớp/Chi đoàn
+    const className = document.getElementById('className').value.trim();
+    if (className) {
+      ctx.font = CONFIG.className.font;
+      ctx.fillStyle = CONFIG.className.color;
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+      ctx.lineWidth = 4;
+      ctx.strokeStyle = "#000000";
+      ctx.strokeText(className, CONFIG.className.x, CONFIG.className.y);
+      ctx.fillText(className, CONFIG.className.x, CONFIG.className.y);
     }
 
     // Set result
