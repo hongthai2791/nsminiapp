@@ -96,6 +96,34 @@ quizForm.addEventListener('submit', (e) => {
   goToStep(2);
 });
 
+// =====================================================================
+// ẢNH PHÔI CỦA BẠN CÓ KÍCH THƯỚC MẶC ĐỊNH LÀ 1080x1080
+// HÃY THAY ĐỔI CÁC THÔNG SỐ DƯỚI ĐÂY ĐỂ CĂN CHỈNH CHO KHỚP VỚI PHÔI
+// =====================================================================
+const CONFIG = {
+  avatar: {
+    x: 240,      // Vị trí X của avatar (từ trái sang)
+    y: 240,      // Vị trí Y của avatar (từ trên xuống)
+    width: 600,  // Chiều rộng của avatar trên phôi
+    height: 600, // Chiều cao của avatar trên phôi
+    // NẾU PHÔI CỦA BẠN LÀ FILE PNG CÓ LỖ TRONG SUỐT Ở GIỮA -> Đổi thành true
+    // NẾU PHÔI CỦA BẠN LÀ FILE JPG BÌNH THƯỜNG -> Để là false
+    drawBehind: true 
+  },
+  name: {
+    x: 540,      // Vị trí X của Tên (540 là ở giữa ảnh 1080)
+    y: 880,      // Vị trí Y của Tên (từ trên xuống)
+    font: "bold 48px Arial",
+    color: "#ffffff"
+  },
+  className: {
+    x: 540,      // Vị trí X của Lớp
+    y: 950,      // Vị trí Y của Lớp
+    font: "bold 36px Arial",
+    color: "#facc15" // Màu vàng
+  }
+};
+
 // Step 2: Image Upload & Cropper
 imageInput.addEventListener('change', (e) => {
   const file = e.target.files[0];
@@ -118,7 +146,7 @@ imageInput.addEventListener('change', (e) => {
     }
 
     cropper = new Cropper(imageToCrop, {
-      aspectRatio: 1, // 1:1 square
+      aspectRatio: CONFIG.avatar.width / CONFIG.avatar.height, // Sử dụng tỷ lệ từ CONFIG
       viewMode: 1,
       dragMode: 'move',
       autoCropArea: 1,
@@ -138,34 +166,6 @@ imageInput.addEventListener('change', (e) => {
 generateBtn.addEventListener('click', () => {
   if (!cropper) return;
 
-  // =====================================================================
-  // ẢNH PHÔI CỦA BẠN CÓ KÍCH THƯỚC MẶC ĐỊNH LÀ 1080x1080
-  // HÃY THAY ĐỔI CÁC THÔNG SỐ DƯỚI ĐÂY ĐỂ CĂN CHỈNH CHO KHỚP VỚI PHÔI
-  // =====================================================================
-  const CONFIG = {
-    avatar: {
-      x: 240,      // Vị trí X của avatar (từ trái sang)
-      y: 240,      // Vị trí Y của avatar (từ trên xuống)
-      width: 600,  // Chiều rộng của avatar trên phôi
-      height: 600, // Chiều cao của avatar trên phôi
-      // NẾU PHÔI CỦA BẠN LÀ FILE PNG CÓ LỖ TRONG SUỐT Ở GIỮA -> Đổi thành true
-      // NẾU PHÔI CỦA BẠN LÀ FILE JPG BÌNH THƯỜNG -> Để là false
-      drawBehind: false 
-    },
-    name: {
-      x: 540,      // Vị trí X của Tên (540 là ở giữa ảnh 1080)
-      y: 880,      // Vị trí Y của Tên (từ trên xuống)
-      font: "bold 48px Arial",
-      color: "#ffffff"
-    },
-    className: {
-      x: 540,      // Vị trí X của Lớp
-      y: 950,      // Vị trí Y của Lớp
-      font: "bold 36px Arial",
-      color: "#facc15" // Màu vàng
-    }
-  };
-
   // Change button state
   const originalText = generateBtn.innerHTML;
   generateBtn.innerHTML = '<i data-lucide="loader-2" class="mr-2 w-5 h-5 animate-spin"></i> Đang xử lý...';
@@ -182,7 +182,7 @@ generateBtn.addEventListener('click', () => {
 
   // Load template
   const templateImg = new Image();
-  templateImg.src = './template.jpg'; // Nếu dùng PNG, hãy đổi tên file này thành template.png
+  templateImg.src = './template.png'; // Nếu dùng PNG, hãy đổi tên file này thành template.png
   templateImg.crossOrigin = 'anonymous';
 
   templateImg.onload = () => {
@@ -206,12 +206,18 @@ generateBtn.addEventListener('click', () => {
     if (fullName) {
       ctx.font = CONFIG.name.font;
       ctx.fillStyle = CONFIG.name.color;
-      ctx.textAlign = "center";
+      
+      // Thay đổi từ "center" sang "left" để chữ bắt đầu từ một điểm cố định
+      ctx.textAlign = "left"; 
       ctx.textBaseline = "middle";
       ctx.lineWidth = 4;
       ctx.strokeStyle = "#000000";
-      ctx.strokeText(fullName.toUpperCase(), CONFIG.name.x, CONFIG.name.y);
-      ctx.fillText(fullName.toUpperCase(), CONFIG.name.x, CONFIG.name.y);
+      
+      // Thêm chữ "Thân tặng đồng chí " vào trước tên
+      const textToDraw = fullName.toUpperCase();
+      
+      ctx.strokeText(textToDraw, CONFIG.name.x, CONFIG.name.y);
+      ctx.fillText(textToDraw, CONFIG.name.x, CONFIG.name.y);
     }
 
     // Vẽ Lớp/Chi đoàn
@@ -219,10 +225,13 @@ generateBtn.addEventListener('click', () => {
     if (className) {
       ctx.font = CONFIG.className.font;
       ctx.fillStyle = CONFIG.className.color;
-      ctx.textAlign = "center";
+      
+      // Tương tự, căn trái cho Lớp/Chi đoàn
+      ctx.textAlign = "left";
       ctx.textBaseline = "middle";
       ctx.lineWidth = 4;
       ctx.strokeStyle = "#000000";
+      
       ctx.strokeText(className, CONFIG.className.x, CONFIG.className.y);
       ctx.fillText(className, CONFIG.className.x, CONFIG.className.y);
     }
