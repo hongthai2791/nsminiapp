@@ -90,12 +90,16 @@
             </h4>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label class="block text-sm font-medium text-slate-700 mb-1">Họ và tên *</label>
+                <label class="block text-sm font-medium text-slate-700 mb-1">Họ và tên (sẽ được in lên ảnh) *</label>
                 <input type="text" id="fullName" required class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all" placeholder="Nguyễn Văn A">
               </div>
               <div>
-                <label class="block text-sm font-medium text-slate-700 mb-1">Bộ phận/Lớp *</label>
+                <label class="block text-sm font-medium text-slate-700 mb-1">Lớp/Chi đoàn *</label>
                 <input type="text" id="className" required class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all" placeholder="Chi đoàn 12A1">
+              </div>
+              <div class="md:col-span-2">
+                <label class="block text-sm font-medium text-slate-700 mb-1">Email (để nhận ảnh đích) *</label>
+                <input type="email" id="email" required class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all" placeholder="nguyenvana@example.com">
               </div>
             </div>
           </div>
@@ -108,57 +112,114 @@
             
             <!-- Q1 -->
             <div class="bg-slate-50 p-5 rounded-xl border border-slate-100">
-              <p class="font-medium text-slate-800 mb-3">1. Đoàn TNCS Hồ Chí Minh được thành lập vào ngày tháng năm nào?</p>
+              <p class="font-medium text-slate-800 mb-3">1. Đoàn Thanh niên Cộng sản Hồ Chí Minh được thành lập vào ngày nào?</p>
               <div class="space-y-2">
                 <label class="flex items-center p-3 rounded-lg border border-slate-200 cursor-pointer hover:bg-blue-50 transition-colors">
                   <input type="radio" name="q1" value="a" class="w-4 h-4 text-blue-600">
-                  <span class="ml-3 text-slate-700">26/03/1930</span>
+                  <span class="ml-3 text-slate-700">A. 26/3/1930</span>
                 </label>
                 <label class="flex items-center p-3 rounded-lg border border-slate-200 cursor-pointer hover:bg-blue-50 transition-colors">
                   <input type="radio" name="q1" value="b" class="w-4 h-4 text-blue-600">
-                  <span class="ml-3 text-slate-700">03/02/1930</span>
+                  <span class="ml-3 text-slate-700">B. 26/3/1931</span>
                 </label>
                 <label class="flex items-center p-3 rounded-lg border border-slate-200 cursor-pointer hover:bg-blue-50 transition-colors">
                   <input type="radio" name="q1" value="c" class="w-4 h-4 text-blue-600">
-                  <span class="ml-3 text-slate-700">26/03/1931</span>
+                  <span class="ml-3 text-slate-700">C. 26/3/1932</span>
                 </label>
               </div>
             </div>
 
             <!-- Q2 -->
             <div class="bg-slate-50 p-5 rounded-xl border border-slate-100">
-              <p class="font-medium text-slate-800 mb-3">2. Người đoàn viên thanh niên cộng sản đầu tiên là ai?</p>
+              <p class="font-medium text-slate-800 mb-3">2. Ai là người sáng lập và rèn luyện Đoàn Thanh niên Cộng sản Hồ Chí Minh?</p>
               <div class="space-y-2">
                 <label class="flex items-center p-3 rounded-lg border border-slate-200 cursor-pointer hover:bg-blue-50 transition-colors">
                   <input type="radio" name="q2" value="a" class="w-4 h-4 text-blue-600">
-                  <span class="ml-3 text-slate-700">Kim Đồng</span>
+                  <span class="ml-3 text-slate-700">A. Võ Nguyên Giáp</span>
                 </label>
                 <label class="flex items-center p-3 rounded-lg border border-slate-200 cursor-pointer hover:bg-blue-50 transition-colors">
                   <input type="radio" name="q2" value="b" class="w-4 h-4 text-blue-600">
-                  <span class="ml-3 text-slate-700">Lý Tự Trọng</span>
+                  <span class="ml-3 text-slate-700">B. Hồ Chí Minh</span>
                 </label>
                 <label class="flex items-center p-3 rounded-lg border border-slate-200 cursor-pointer hover:bg-blue-50 transition-colors">
                   <input type="radio" name="q2" value="c" class="w-4 h-4 text-blue-600">
-                  <span class="ml-3 text-slate-700">Võ Thị Sáu</span>
+                  <span class="ml-3 text-slate-700">C. Phạm Văn Đồng</span>
                 </label>
               </div>
             </div>
 
             <!-- Q3 -->
             <div class="bg-slate-50 p-5 rounded-xl border border-slate-100">
-              <p class="font-medium text-slate-800 mb-3">3. Tác giả của bài hát "Thanh niên làm theo lời Bác" (Đoàn ca) là ai?</p>
+              <p class="font-medium text-slate-800 mb-3">3. Bài hát truyền thống của Đoàn TNCS Hồ Chí Minh là bài nào?</p>
               <div class="space-y-2">
                 <label class="flex items-center p-3 rounded-lg border border-slate-200 cursor-pointer hover:bg-blue-50 transition-colors">
                   <input type="radio" name="q3" value="a" class="w-4 h-4 text-blue-600">
-                  <span class="ml-3 text-slate-700">Văn Cao</span>
+                  <span class="ml-3 text-slate-700">A. Tiến quân ca</span>
                 </label>
                 <label class="flex items-center p-3 rounded-lg border border-slate-200 cursor-pointer hover:bg-blue-50 transition-colors">
                   <input type="radio" name="q3" value="b" class="w-4 h-4 text-blue-600">
-                  <span class="ml-3 text-slate-700">Hoàng Hòa</span>
+                  <span class="ml-3 text-slate-700">B. Thanh niên làm theo lời Bác</span>
                 </label>
                 <label class="flex items-center p-3 rounded-lg border border-slate-200 cursor-pointer hover:bg-blue-50 transition-colors">
                   <input type="radio" name="q3" value="c" class="w-4 h-4 text-blue-600">
-                  <span class="ml-3 text-slate-700">Lưu Hữu Phước</span>
+                  <span class="ml-3 text-slate-700">C. Nối vòng tay lớn</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Q4 -->
+            <div class="bg-slate-50 p-5 rounded-xl border border-slate-100">
+              <p class="font-medium text-slate-800 mb-3">4. Khẩu hiệu nổi tiếng của thanh niên Việt Nam là gì?</p>
+              <div class="space-y-2">
+                <label class="flex items-center p-3 rounded-lg border border-slate-200 cursor-pointer hover:bg-blue-50 transition-colors">
+                  <input type="radio" name="q4" value="a" class="w-4 h-4 text-blue-600">
+                  <span class="ml-3 text-slate-700">A. Tuổi trẻ sáng tạo</span>
+                </label>
+                <label class="flex items-center p-3 rounded-lg border border-slate-200 cursor-pointer hover:bg-blue-50 transition-colors">
+                  <input type="radio" name="q4" value="b" class="w-4 h-4 text-blue-600">
+                  <span class="ml-3 text-slate-700">B. Đâu cần thanh niên có, việc gì khó có thanh niên</span>
+                </label>
+                <label class="flex items-center p-3 rounded-lg border border-slate-200 cursor-pointer hover:bg-blue-50 transition-colors">
+                  <input type="radio" name="q4" value="c" class="w-4 h-4 text-blue-600">
+                  <span class="ml-3 text-slate-700">C. Thanh niên tiến bước</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Q5 -->
+            <div class="bg-slate-50 p-5 rounded-xl border border-slate-100">
+              <p class="font-medium text-slate-800 mb-3">5. Màu áo truyền thống của thanh niên Việt Nam là màu gì?</p>
+              <div class="space-y-2">
+                <label class="flex items-center p-3 rounded-lg border border-slate-200 cursor-pointer hover:bg-blue-50 transition-colors">
+                  <input type="radio" name="q5" value="a" class="w-4 h-4 text-blue-600">
+                  <span class="ml-3 text-slate-700">A. Xanh dương</span>
+                </label>
+                <label class="flex items-center p-3 rounded-lg border border-slate-200 cursor-pointer hover:bg-blue-50 transition-colors">
+                  <input type="radio" name="q5" value="b" class="w-4 h-4 text-blue-600">
+                  <span class="ml-3 text-slate-700">B. Xanh lá</span>
+                </label>
+                <label class="flex items-center p-3 rounded-lg border border-slate-200 cursor-pointer hover:bg-blue-50 transition-colors">
+                  <input type="radio" name="q5" value="c" class="w-4 h-4 text-blue-600">
+                  <span class="ml-3 text-slate-700">C. Đỏ</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Q6 -->
+            <div class="bg-slate-50 p-5 rounded-xl border border-slate-100">
+              <p class="font-medium text-slate-800 mb-3">6. Thanh niên khi tham gia hoạt động tập thể cần nhất điều gì?</p>
+              <div class="space-y-2">
+                <label class="flex items-center p-3 rounded-lg border border-slate-200 cursor-pointer hover:bg-blue-50 transition-colors">
+                  <input type="radio" name="q6" value="a" class="w-4 h-4 text-blue-600">
+                  <span class="ml-3 text-slate-700">A. Nhiệt huyết</span>
+                </label>
+                <label class="flex items-center p-3 rounded-lg border border-slate-200 cursor-pointer hover:bg-blue-50 transition-colors">
+                  <input type="radio" name="q6" value="b" class="w-4 h-4 text-blue-600">
+                  <span class="ml-3 text-slate-700">B. Tinh thần đoàn kết</span>
+                </label>
+                <label class="flex items-center p-3 rounded-lg border border-slate-200 cursor-pointer hover:bg-blue-50 transition-colors">
+                  <input type="radio" name="q6" value="c" class="w-4 h-4 text-blue-600">
+                  <span class="ml-3 text-slate-700">C. Cả hai</span>
                 </label>
               </div>
             </div>

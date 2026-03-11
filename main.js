@@ -66,24 +66,28 @@ quizForm.addEventListener('submit', (e) => {
   
   const fullName = document.getElementById('fullName').value.trim();
   const className = document.getElementById('className').value.trim();
+  const email = document.getElementById('email').value.trim();
   
   const q1 = document.querySelector('input[name="q1"]:checked')?.value;
   const q2 = document.querySelector('input[name="q2"]:checked')?.value;
   const q3 = document.querySelector('input[name="q3"]:checked')?.value;
+  const q4 = document.querySelector('input[name="q4"]:checked')?.value;
+  const q5 = document.querySelector('input[name="q5"]:checked')?.value;
+  const q6 = document.querySelector('input[name="q6"]:checked')?.value;
 
-  if (!fullName || !className) {
+  if (!fullName || !className || !email) {
     showError('Vui lòng điền đầy đủ thông tin cá nhân.');
     return;
   }
 
-  if (!q1 || !q2 || !q3) {
+  if (!q1 || !q2 || !q3 || !q4 || !q5 || !q6) {
     showError('Vui lòng trả lời tất cả các câu hỏi trắc nghiệm.');
     return;
   }
 
-  // Check answers
-  if (q1 !== 'c' || q2 !== 'b' || q3 !== 'b') {
-    showError('Rất tiếc, có câu trả lời chưa chính xác. Gợi ý: 26/03/1931, Lý Tự Trọng, Hoàng Hòa.');
+  // Check answers (b, b, b, b, a, c)
+  if (q1 !== 'b' || q2 !== 'b' || q3 !== 'b' || q4 !== 'b' || q5 !== 'a' || q6 !== 'c') {
+    showError('Rất tiếc, có câu trả lời chưa chính xác. Vui lòng kiểm tra lại kiến thức về Đoàn nhé!');
     return;
   }
 
@@ -165,6 +169,21 @@ generateBtn.addEventListener('click', () => {
     // Draw cropped user image on top (centered, 600x600)
     // Adjust these coordinates based on your actual template.jpg design
     ctx.drawImage(croppedCanvas, 240, 240, 600, 600);
+
+    // Draw the user's name on the image
+    const fullName = document.getElementById('fullName').value.trim();
+    if (fullName) {
+      ctx.font = "bold 48px Arial";
+      ctx.fillStyle = "#ffffff"; // White text, change if needed
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+      
+      // Thêm viền chữ (stroke) để chữ nổi bật hơn trên mọi nền ảnh
+      ctx.lineWidth = 4;
+      ctx.strokeStyle = "#000000";
+      ctx.strokeText(fullName.toUpperCase(), 540, 900); // Tọa độ (x=540, y=900) - có thể điều chỉnh
+      ctx.fillText(fullName.toUpperCase(), 540, 900);
+    }
 
     // Set result
     finalResult.src = finalCanvas.toDataURL('image/jpeg', 0.9);
