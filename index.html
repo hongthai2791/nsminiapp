@@ -1,13 +1,238 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Google AI Studio App</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
-</html>
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Avatar Kỷ niệm 95 năm Đoàn TNCS Hồ Chí Minh</title>
+  
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Cropper.js CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css" rel="stylesheet">
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <style>
+    /* Custom styles for smooth transitions */
+    .step-container {
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+    .hidden-step {
+      display: none !important;
+      opacity: 0;
+      transform: scale(0.98) translateY(15px);
+    }
+    .active-step {
+      display: block;
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-slate-50 font-sans text-slate-900">
+  <!-- Header -->
+  <header class="bg-blue-600 text-white py-4 shadow-md sticky top-0 z-10">
+    <div class="max-w-3xl mx-auto px-4 flex items-center justify-center">
+      <img src="https://upload.wikimedia.org/wikipedia/vi/thumb/0/07/Huy_hi%E1%BB%87u_%C4%90o%C3%A0n_Thanh_ni%C3%AAn_C%E1%BB%99ng_s%E1%BA%A3n_H%E1%BB%93_Ch%C3%AD_Minh.svg/1200px-Huy_hi%E1%BB%87u_%C4%90o%C3%A0n_Thanh_ni%C3%AAn_C%E1%BB%99ng_s%E1%BA%A3n_H%E1%BB%93_Ch%C3%AD_Minh.svg.png" alt="Logo Đoàn" class="h-10 w-10 mr-3 object-contain" />
+      <h1 class="text-xl md:text-2xl font-bold text-center uppercase tracking-wide">
+        Kỷ niệm 95 năm thành lập Đoàn
+      </h1>
+    </div>
+  </header>
 
+  <main class="max-w-3xl mx-auto px-4 py-8 relative">
+    <!-- Step 1: Form & Quiz -->
+    <div id="step1" class="step-container active-step space-y-8">
+      <!-- Banner -->
+      <div class="bg-white rounded-2xl shadow-sm overflow-hidden border border-slate-200">
+        <div class="h-48 bg-gradient-to-r from-blue-600 to-blue-400 relative flex items-center justify-center">
+          <div class="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
+          <div class="text-center text-white z-10 px-4">
+            <h2 class="text-3xl md:text-4xl font-black uppercase mb-2 drop-shadow-md">Tự hào tuổi trẻ Việt Nam</h2>
+            <p class="text-lg md:text-xl font-medium drop-shadow-sm">26/03/1931 - 26/03/2026</p>
+          </div>
+        </div>
+        <div class="p-6 md:p-8">
+          <h3 class="text-xl font-bold text-blue-800 mb-4">Lời ngỏ</h3>
+          <p class="text-slate-600 leading-relaxed mb-4">
+            Chào mừng kỷ niệm 95 năm ngày thành lập Đoàn TNCS Hồ Chí Minh. Hãy cùng tham gia trả lời các câu hỏi tìm hiểu về Đoàn và tạo ngay cho mình một chiếc Avatar thật "chất" nhé!
+          </p>
+          <div class="bg-blue-50 p-4 rounded-xl border border-blue-100">
+            <h4 class="font-semibold text-blue-800 mb-2 flex items-center">
+              <i data-lucide="alert-circle" class="w-5 h-5 mr-2"></i> Thể lệ tham gia
+            </h4>
+            <ul class="list-disc list-inside text-sm text-blue-700 space-y-1">
+              <li>Điền đầy đủ thông tin cá nhân.</li>
+              <li>Trả lời đúng các câu hỏi trắc nghiệm.</li>
+              <li>Tải ảnh chân dung rõ nét (tối đa 5MB).</li>
+              <li>Nhận ảnh và chia sẻ lên mạng xã hội.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Form -->
+      <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 md:p-8">
+        <h3 class="text-2xl font-bold text-slate-800 mb-6 border-b pb-4">Thông tin & Khảo sát</h3>
+        
+        <div id="error-message" class="hidden mb-6 p-4 bg-red-50 text-red-600 rounded-xl border border-red-200 flex items-start">
+          <i data-lucide="alert-circle" class="w-5 h-5 mr-2 flex-shrink-0 mt-0.5"></i>
+          <span id="error-text"></span>
+        </div>
+
+        <form id="quiz-form" class="space-y-8">
+          <!-- Personal Info -->
+          <div class="space-y-4">
+            <h4 class="font-semibold text-lg text-slate-700 flex items-center">
+              <i data-lucide="user" class="w-5 h-5 mr-2 text-blue-600"></i> Thông tin cá nhân
+            </h4>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm font-medium text-slate-700 mb-1">Họ và tên *</label>
+                <input type="text" id="fullName" required class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all" placeholder="Nguyễn Văn A">
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-slate-700 mb-1">Bộ phận/Lớp *</label>
+                <input type="text" id="className" required class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all" placeholder="Chi đoàn 12A1">
+              </div>
+            </div>
+          </div>
+
+          <!-- Quiz -->
+          <div class="space-y-6">
+            <h4 class="font-semibold text-lg text-slate-700 flex items-center">
+              <i data-lucide="help-circle" class="w-5 h-5 mr-2 text-blue-600"></i> Trắc nghiệm kiến thức
+            </h4>
+            
+            <!-- Q1 -->
+            <div class="bg-slate-50 p-5 rounded-xl border border-slate-100">
+              <p class="font-medium text-slate-800 mb-3">1. Đoàn TNCS Hồ Chí Minh được thành lập vào ngày tháng năm nào?</p>
+              <div class="space-y-2">
+                <label class="flex items-center p-3 rounded-lg border border-slate-200 cursor-pointer hover:bg-blue-50 transition-colors">
+                  <input type="radio" name="q1" value="a" class="w-4 h-4 text-blue-600">
+                  <span class="ml-3 text-slate-700">26/03/1930</span>
+                </label>
+                <label class="flex items-center p-3 rounded-lg border border-slate-200 cursor-pointer hover:bg-blue-50 transition-colors">
+                  <input type="radio" name="q1" value="b" class="w-4 h-4 text-blue-600">
+                  <span class="ml-3 text-slate-700">03/02/1930</span>
+                </label>
+                <label class="flex items-center p-3 rounded-lg border border-slate-200 cursor-pointer hover:bg-blue-50 transition-colors">
+                  <input type="radio" name="q1" value="c" class="w-4 h-4 text-blue-600">
+                  <span class="ml-3 text-slate-700">26/03/1931</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Q2 -->
+            <div class="bg-slate-50 p-5 rounded-xl border border-slate-100">
+              <p class="font-medium text-slate-800 mb-3">2. Người đoàn viên thanh niên cộng sản đầu tiên là ai?</p>
+              <div class="space-y-2">
+                <label class="flex items-center p-3 rounded-lg border border-slate-200 cursor-pointer hover:bg-blue-50 transition-colors">
+                  <input type="radio" name="q2" value="a" class="w-4 h-4 text-blue-600">
+                  <span class="ml-3 text-slate-700">Kim Đồng</span>
+                </label>
+                <label class="flex items-center p-3 rounded-lg border border-slate-200 cursor-pointer hover:bg-blue-50 transition-colors">
+                  <input type="radio" name="q2" value="b" class="w-4 h-4 text-blue-600">
+                  <span class="ml-3 text-slate-700">Lý Tự Trọng</span>
+                </label>
+                <label class="flex items-center p-3 rounded-lg border border-slate-200 cursor-pointer hover:bg-blue-50 transition-colors">
+                  <input type="radio" name="q2" value="c" class="w-4 h-4 text-blue-600">
+                  <span class="ml-3 text-slate-700">Võ Thị Sáu</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Q3 -->
+            <div class="bg-slate-50 p-5 rounded-xl border border-slate-100">
+              <p class="font-medium text-slate-800 mb-3">3. Tác giả của bài hát "Thanh niên làm theo lời Bác" (Đoàn ca) là ai?</p>
+              <div class="space-y-2">
+                <label class="flex items-center p-3 rounded-lg border border-slate-200 cursor-pointer hover:bg-blue-50 transition-colors">
+                  <input type="radio" name="q3" value="a" class="w-4 h-4 text-blue-600">
+                  <span class="ml-3 text-slate-700">Văn Cao</span>
+                </label>
+                <label class="flex items-center p-3 rounded-lg border border-slate-200 cursor-pointer hover:bg-blue-50 transition-colors">
+                  <input type="radio" name="q3" value="b" class="w-4 h-4 text-blue-600">
+                  <span class="ml-3 text-slate-700">Hoàng Hòa</span>
+                </label>
+                <label class="flex items-center p-3 rounded-lg border border-slate-200 cursor-pointer hover:bg-blue-50 transition-colors">
+                  <input type="radio" name="q3" value="c" class="w-4 h-4 text-blue-600">
+                  <span class="ml-3 text-slate-700">Lưu Hữu Phước</span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-6 rounded-xl shadow-md hover:shadow-lg transition-all flex items-center justify-center text-lg">
+            Tiếp tục tạo Avatar <i data-lucide="chevron-right" class="ml-2 w-5 h-5"></i>
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Step 2: Avatar Cropping -->
+    <div id="step2" class="step-container hidden-step bg-white rounded-2xl shadow-sm border border-slate-200 p-6 md:p-8">
+      <div class="flex items-center justify-between mb-6">
+        <h3 class="text-2xl font-bold text-slate-800">Tạo Avatar Kỷ niệm</h3>
+        <button type="button" onclick="goToStep(1)" class="text-slate-500 hover:text-slate-700 flex items-center text-sm font-medium transition-colors">
+          <i data-lucide="arrow-left" class="w-4 h-4 mr-1"></i> Quay lại
+        </button>
+      </div>
+
+      <div class="mb-6">
+        <label class="block text-sm font-medium text-slate-700 mb-2">Chọn ảnh chân dung của bạn</label>
+        <div class="flex items-center justify-center w-full">
+          <label class="flex flex-col items-center justify-center w-full h-32 border-2 border-slate-300 border-dashed rounded-xl cursor-pointer bg-slate-50 hover:bg-slate-100 transition-colors">
+            <div class="flex flex-col items-center justify-center pt-5 pb-6">
+              <i data-lucide="upload-cloud" class="w-8 h-8 text-slate-500 mb-2"></i>
+              <p class="text-sm text-slate-500"><span class="font-semibold">Nhấn để tải ảnh lên</span> hoặc kéo thả vào đây</p>
+              <p class="text-xs text-slate-400 mt-1">PNG, JPG (Tối đa 5MB)</p>
+            </div>
+            <input id="imageInput" type="file" class="hidden" accept="image/*" />
+          </label>
+        </div>
+      </div>
+
+      <div id="cropper-container" class="hidden mb-6">
+        <p class="text-sm font-medium text-slate-700 mb-2">Căn chỉnh ảnh của bạn:</p>
+        <div class="relative w-full h-64 md:h-96 bg-slate-900 rounded-xl overflow-hidden">
+          <img id="image-to-crop" src="" alt="Picture" class="max-w-full block">
+        </div>
+      </div>
+
+      <button id="generate-btn" disabled class="w-full bg-blue-600 disabled:bg-slate-300 disabled:cursor-not-allowed hover:bg-blue-700 text-white font-bold py-4 px-6 rounded-xl shadow-md hover:shadow-lg transition-all flex items-center justify-center text-lg">
+        <i data-lucide="image" class="mr-2 w-5 h-5"></i> Tạo Avatar ngay
+      </button>
+    </div>
+
+    <!-- Step 3: Result -->
+    <div id="step3" class="step-container hidden-step bg-white rounded-2xl shadow-sm border border-slate-200 p-6 md:p-8 text-center">
+      <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+        <i data-lucide="check-circle" class="w-8 h-8 text-green-600"></i>
+      </div>
+      <h3 class="text-2xl font-bold text-slate-800 mb-2">Chúc mừng bạn!</h3>
+      <p class="text-slate-600 mb-8">Bạn đã hoàn thành khảo sát và tạo Avatar thành công.</p>
+
+      <div class="max-w-sm mx-auto mb-8 rounded-2xl overflow-hidden shadow-lg border border-slate-200">
+        <img id="final-result" src="" alt="Avatar Kỷ niệm" class="w-full h-auto" />
+      </div>
+
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <button onclick="downloadAvatar()" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-xl shadow-md hover:shadow-lg transition-all flex items-center justify-center">
+          <i data-lucide="download" class="mr-2 w-5 h-5"></i> Tải ảnh về máy
+        </button>
+        <button onclick="goToStep(1)" class="flex-1 bg-white hover:bg-slate-50 text-slate-700 font-bold py-3 px-6 rounded-xl border border-slate-300 shadow-sm transition-all flex items-center justify-center">
+          <i data-lucide="refresh-cw" class="mr-2 w-5 h-5"></i> Làm lại từ đầu
+        </button>
+      </div>
+    </div>
+  </main>
+
+  <!-- Cropper.js Script -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"></script>
+  
+  <!-- Main Logic -->
+  <script src="./main.js"></script>
+</body>
+</html>
