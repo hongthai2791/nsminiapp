@@ -1,5 +1,7 @@
 // Initialize Lucide icons
-lucide.createIcons();
+if (typeof lucide !== 'undefined') {
+  lucide.createIcons();
+}
 
 // ĐIỀN LINK GOOGLE APPS SCRIPT CỦA BẠN VÀO ĐÂY
 const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwkK45yxJPbWQVaBJmovNlFJ06afuQ8jjtmr7e4Tw-zEOtHrQPmYpkiI6_7ckWyU3aawQ/exec'; // Thay bằng link thật của bạn
@@ -100,11 +102,11 @@ quizForm.addEventListener('submit', async (e) => {
   const originalBtnText = submitBtn.innerHTML;
   
   try {
-    submitBtn.innerHTML = '<i data-lucide="loader-2" class="w-5 h-5 mr-2 animate-spin inline-block"></i> Đang lưu thông tin...';
+    submitBtn.innerHTML = '<i data-lucide="loader-2" class="w-5 h-5 mr-2 animate-spin inline-block"></i> Đang xử lý...';
     submitBtn.disabled = true;
     submitBtn.classList.add('opacity-75', 'cursor-not-allowed');
     
-    // Gửi dữ liệu lên Google Sheet
+    // Gửi dữ liệu lên Google Sheet (không block UI)
     if (GOOGLE_SCRIPT_URL && GOOGLE_SCRIPT_URL.includes('script.google.com')) {
       const payload = {
         timestamp: new Date().toLocaleString('vi-VN'),
@@ -113,20 +115,19 @@ quizForm.addEventListener('submit', async (e) => {
         q1: q1, q2: q2, q3: q3, q4: q4, q5: q5, q6: q6
       };
       
-      await fetch(GOOGLE_SCRIPT_URL, {
+      fetch(GOOGLE_SCRIPT_URL, {
         method: 'POST',
         mode: 'no-cors', // Bỏ qua lỗi CORS
         headers: {
           'Content-Type': 'text/plain;charset=utf-8',
         },
         body: JSON.stringify(payload)
-      });
+      }).catch(err => console.error('Lỗi lưu sheet:', err));
     } else {
       console.warn("Chưa cấu hình GOOGLE_SCRIPT_URL. Bỏ qua bước lưu Google Sheet.");
     }
   } catch (error) {
-    console.error('Lỗi khi lưu vào Google Sheet:', error);
-    // Vẫn cho phép đi tiếp dù lỗi lưu sheet
+    console.error('Lỗi khi xử lý form:', error);
   } finally {
     // Khôi phục nút
     submitBtn.innerHTML = originalBtnText;
@@ -209,7 +210,7 @@ generateBtn.addEventListener('click', () => {
   // Change button state
   const originalText = generateBtn.innerHTML;
   generateBtn.innerHTML = '<i data-lucide="loader-2" class="mr-2 w-5 h-5 animate-spin"></i> Đang xử lý...';
-  lucide.createIcons();
+  if (typeof lucide !== 'undefined') lucide.createIcons();
   generateBtn.disabled = true;
 
   // Get cropped canvas
@@ -266,7 +267,7 @@ generateBtn.addEventListener('click', () => {
     // Reset button and go to step 3
     generateBtn.innerHTML = originalText;
     generateBtn.disabled = false;
-    lucide.createIcons();
+    if (typeof lucide !== 'undefined') lucide.createIcons();
     goToStep(3);
   };
 
@@ -274,7 +275,7 @@ generateBtn.addEventListener('click', () => {
     alert('Không tìm thấy phôi thiệp (template.jpg). Vui lòng đảm bảo file template.jpg nằm cùng thư mục.');
     generateBtn.innerHTML = originalText;
     generateBtn.disabled = false;
-    lucide.createIcons();
+    if (typeof lucide !== 'undefined') lucide.createIcons();
   };
 });
 
