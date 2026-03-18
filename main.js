@@ -158,7 +158,7 @@ const CONFIG = {
     drawBehind: true 
   },
   name: {
-    x: 990,      // Vị trí X của Tên (bắt đầu từ lề trái của dòng kẻ chấm)
+    x: 790,      // Vị trí X của Tên (bắt đầu từ lề trái của dòng kẻ chấm)
     y: 1051,      // Vị trí Y của Tên (nằm trên dòng kẻ chấm)
     font: "bold 56px Arial",
     color: "#b3251b" // Màu đỏ đồng bộ với chữ "Chúc Mừng Kỷ Niệm"
