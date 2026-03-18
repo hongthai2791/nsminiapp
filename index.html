@@ -31,7 +31,7 @@
     }
   </style>
 </head>
-<body class="min-h-screen bg-slate-50 font-sans text-slate-900">
+<body class="min-h-screen bg-blue-50 font-sans text-blue-900">
   <!-- Header -->
   <header class="bg-blue-600 text-white py-4 shadow-md sticky top-0 z-10">
     <div class="max-w-3xl mx-auto px-4 flex items-center justify-center">
@@ -46,7 +46,7 @@
     <!-- Step 1: Form & Quiz -->
     <div id="step1" class="step-container active-step space-y-8">
       <!-- Banner -->
-      <div class="bg-white rounded-2xl shadow-sm overflow-hidden border border-slate-200">
+      <div class="bg-white rounded-2xl shadow-sm overflow-hidden border border-blue-200">
         <div class="h-48 relative flex items-center justify-center bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1522747776116-64ee03be1fac?q=80&w=2070&auto=format&fit=crop');">
           <div class="absolute inset-0 bg-black/20"></div>
           <div class="text-center text-white z-10 px-4">
@@ -55,15 +55,15 @@
         </div>
         <div class="p-6 md:p-8">
           <h3 class="text-xl font-bold text-blue-800 mb-4">Lời ngỏ</h3>
-          <p class="text-slate-600 leading-relaxed">
+          <p class="text-blue-700 leading-relaxed">
             Các bạn đoàn viên thân mến. Hãy cùng tham gia trả lời các câu hỏi tìm hiểu và nhận món quà bất ngờ từ BCH Đoàn trường THPT Nguyễn Siêu nhé
           </p>
         </div>
       </div>
 
       <!-- Form -->
-      <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 md:p-8">
-        <h3 class="text-2xl font-bold text-slate-800 mb-6 border-b pb-4">Thông tin người tham gia</h3>
+      <div class="bg-white rounded-2xl shadow-sm border border-blue-200 p-6 md:p-8">
+        <h3 class="text-2xl font-bold text-blue-900 mb-6 border-b border-blue-100 pb-4">Thông tin người tham gia</h3>
         
         <div id="error-message" class="hidden mb-6 p-4 bg-red-50 text-red-600 rounded-xl border border-red-200 flex items-start">
           <i data-lucide="alert-circle" class="w-5 h-5 mr-2 flex-shrink-0 mt-0.5"></i>
@@ -73,137 +73,132 @@
         <form id="quiz-form" class="space-y-8">
           <!-- Personal Info -->
           <div class="space-y-4">
-            <h4 class="font-semibold text-lg text-slate-700 flex items-center">
+            <h4 class="font-semibold text-lg text-blue-800 flex items-center">
               <i data-lucide="user" class="w-5 h-5 mr-2 text-blue-600"></i> Thông tin cá nhân
             </h4>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label class="block text-sm font-medium text-slate-700 mb-1">Họ và tên *</label>
-                <input type="text" id="fullName" required class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all" placeholder="Nguyễn Văn A">
+                <label class="block text-sm font-medium text-blue-800 mb-1">Họ và tên *</label>
+                <input type="text" id="fullName" required class="w-full px-4 py-2.5 rounded-xl border border-blue-200 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all bg-blue-50/30" placeholder="Nguyễn Văn A">
               </div>
               <div>
-                <label class="block text-sm font-medium text-slate-700 mb-1">Email *</label>
-                <input type="email" id="email" required class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all" placeholder="nguyenvana@example.com">
+                <label class="block text-sm font-medium text-blue-800 mb-1">Email *</label>
+                <input type="email" id="email" required class="w-full px-4 py-2.5 rounded-xl border border-blue-200 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all bg-blue-50/30" placeholder="nguyenvana@example.com">
               </div>
-            </div>
-          </div>
-
-          <!-- Quiz -->
-          <div class="space-y-6">
-            <h4 class="font-semibold text-lg text-slate-700 flex items-center">
+               <h4 class="font-semibold text-lg text-blue-800 flex items-center">
               <i data-lucide="help-circle" class="w-5 h-5 mr-2 text-blue-600"></i> Trắc nghiệm kiến thức
             </h4>
             
             <!-- Q1 -->
-            <div class="bg-slate-50 p-5 rounded-xl border border-slate-100">
-              <p class="font-medium text-slate-800 mb-3">1. Đoàn Thanh niên Cộng sản Hồ Chí Minh được thành lập vào ngày nào?</p>
+            <div class="bg-blue-50/50 p-5 rounded-xl border border-blue-100">
+              <p class="font-medium text-blue-900 mb-3">1. Đoàn Thanh niên Cộng sản Hồ Chí Minh được thành lập vào ngày nào?</p>
               <div class="space-y-2">
-                <label class="flex items-center p-3 rounded-lg border border-slate-200 cursor-pointer hover:bg-blue-50 transition-colors">
+                <label class="flex items-center p-3 rounded-lg border border-blue-200 cursor-pointer hover:bg-blue-100 transition-colors bg-white">
                   <input type="radio" name="q1" value="a" class="w-4 h-4 text-blue-600">
-                  <span class="ml-3 text-slate-700">A. 26/3/1930</span>
+                  <span class="ml-3 text-blue-800">A. 26/3/1930</span>
                 </label>
-                <label class="flex items-center p-3 rounded-lg border border-slate-200 cursor-pointer hover:bg-blue-50 transition-colors">
+                <label class="flex items-center p-3 rounded-lg border border-blue-200 cursor-pointer hover:bg-blue-100 transition-colors bg-white">
                   <input type="radio" name="q1" value="b" class="w-4 h-4 text-blue-600">
-                  <span class="ml-3 text-slate-700">B. 26/3/1931</span>
+                  <span class="ml-3 text-blue-800">B. 26/3/1931</span>
                 </label>
-                <label class="flex items-center p-3 rounded-lg border border-slate-200 cursor-pointer hover:bg-blue-50 transition-colors">
+                <label class="flex items-center p-3 rounded-lg border border-blue-200 cursor-pointer hover:bg-blue-100 transition-colors bg-white">
                   <input type="radio" name="q1" value="c" class="w-4 h-4 text-blue-600">
-                  <span class="ml-3 text-slate-700">C. 26/3/1932</span>
+                  <span class="ml-3 text-blue-800">C. 26/3/1932</span>
                 </label>
               </div>
             </div>
 
             <!-- Q2 -->
-            <div class="bg-slate-50 p-5 rounded-xl border border-slate-100">
-              <p class="font-medium text-slate-800 mb-3">2. Ai là người sáng lập và rèn luyện Đoàn Thanh niên Cộng sản Hồ Chí Minh?</p>
+            <div class="bg-blue-50/50 p-5 rounded-xl border border-blue-100">
+              <p class="font-medium text-blue-900 mb-3">2. Ai là người sáng lập và rèn luyện Đoàn Thanh niên Cộng sản Hồ Chí Minh?</p>
               <div class="space-y-2">
-                <label class="flex items-center p-3 rounded-lg border border-slate-200 cursor-pointer hover:bg-blue-50 transition-colors">
+                <label class="flex items-center p-3 rounded-lg border border-blue-200 cursor-pointer hover:bg-blue-100 transition-colors bg-white">
                   <input type="radio" name="q2" value="a" class="w-4 h-4 text-blue-600">
-                  <span class="ml-3 text-slate-700">A. Võ Nguyên Giáp</span>
+                  <span class="ml-3 text-blue-800">A. Võ Nguyên Giáp</span>
                 </label>
-                <label class="flex items-center p-3 rounded-lg border border-slate-200 cursor-pointer hover:bg-blue-50 transition-colors">
+                <label class="flex items-center p-3 rounded-lg border border-blue-200 cursor-pointer hover:bg-blue-100 transition-colors bg-white">
                   <input type="radio" name="q2" value="b" class="w-4 h-4 text-blue-600">
-                  <span class="ml-3 text-slate-700">B. Hồ Chí Minh</span>
+                  <span class="ml-3 text-blue-800">B. Hồ Chí Minh</span>
                 </label>
-                <label class="flex items-center p-3 rounded-lg border border-slate-200 cursor-pointer hover:bg-blue-50 transition-colors">
+                <label class="flex items-center p-3 rounded-lg border border-blue-200 cursor-pointer hover:bg-blue-100 transition-colors bg-white">
                   <input type="radio" name="q2" value="c" class="w-4 h-4 text-blue-600">
-                  <span class="ml-3 text-slate-700">C. Phạm Văn Đồng</span>
+                  <span class="ml-3 text-blue-800">C. Phạm Văn Đồng</span>
                 </label>
               </div>
             </div>
 
             <!-- Q3 -->
-            <div class="bg-slate-50 p-5 rounded-xl border border-slate-100">
-              <p class="font-medium text-slate-800 mb-3">3. Bài hát truyền thống của Đoàn TNCS Hồ Chí Minh là bài nào?</p>
+            <div class="bg-blue-50/50 p-5 rounded-xl border border-blue-100">
+              <p class="font-medium text-blue-900 mb-3">3. Bài hát truyền thống của Đoàn TNCS Hồ Chí Minh là bài nào?</p>
               <div class="space-y-2">
-                <label class="flex items-center p-3 rounded-lg border border-slate-200 cursor-pointer hover:bg-blue-50 transition-colors">
+                <label class="flex items-center p-3 rounded-lg border border-blue-200 cursor-pointer hover:bg-blue-100 transition-colors bg-white">
                   <input type="radio" name="q3" value="a" class="w-4 h-4 text-blue-600">
-                  <span class="ml-3 text-slate-700">A. Tiến quân ca</span>
+                  <span class="ml-3 text-blue-800">A. Tiến quân ca</span>
                 </label>
-                <label class="flex items-center p-3 rounded-lg border border-slate-200 cursor-pointer hover:bg-blue-50 transition-colors">
+                <label class="flex items-center p-3 rounded-lg border border-blue-200 cursor-pointer hover:bg-blue-100 transition-colors bg-white">
                   <input type="radio" name="q3" value="b" class="w-4 h-4 text-blue-600">
-                  <span class="ml-3 text-slate-700">B. Thanh niên làm theo lời Bác</span>
+                  <span class="ml-3 text-blue-800">B. Thanh niên làm theo lời Bác</span>
                 </label>
-                <label class="flex items-center p-3 rounded-lg border border-slate-200 cursor-pointer hover:bg-blue-50 transition-colors">
+                <label class="flex items-center p-3 rounded-lg border border-blue-200 cursor-pointer hover:bg-blue-100 transition-colors bg-white">
                   <input type="radio" name="q3" value="c" class="w-4 h-4 text-blue-600">
-                  <span class="ml-3 text-slate-700">C. Nối vòng tay lớn</span>
+                  <span class="ml-3 text-blue-800">C. Nối vòng tay lớn</span>
                 </label>
               </div>
             </div>
 
             <!-- Q4 -->
-            <div class="bg-slate-50 p-5 rounded-xl border border-slate-100">
-              <p class="font-medium text-slate-800 mb-3">4. Khẩu hiệu nổi tiếng của thanh niên Việt Nam là gì?</p>
+            <div class="bg-blue-50/50 p-5 rounded-xl border border-blue-100">
+              <p class="font-medium text-blue-900 mb-3">4. Khẩu hiệu nổi tiếng của thanh niên Việt Nam là gì?</p>
               <div class="space-y-2">
-                <label class="flex items-center p-3 rounded-lg border border-slate-200 cursor-pointer hover:bg-blue-50 transition-colors">
+                <label class="flex items-center p-3 rounded-lg border border-blue-200 cursor-pointer hover:bg-blue-100 transition-colors bg-white">
                   <input type="radio" name="q4" value="a" class="w-4 h-4 text-blue-600">
-                  <span class="ml-3 text-slate-700">A. Tuổi trẻ sáng tạo</span>
+                  <span class="ml-3 text-blue-800">A. Tuổi trẻ sáng tạo</span>
                 </label>
-                <label class="flex items-center p-3 rounded-lg border border-slate-200 cursor-pointer hover:bg-blue-50 transition-colors">
+                <label class="flex items-center p-3 rounded-lg border border-blue-200 cursor-pointer hover:bg-blue-100 transition-colors bg-white">
                   <input type="radio" name="q4" value="b" class="w-4 h-4 text-blue-600">
-                  <span class="ml-3 text-slate-700">B. Đâu cần thanh niên có, việc gì khó có thanh niên</span>
+                  <span class="ml-3 text-blue-800">B. Đâu cần thanh niên có, việc gì khó có thanh niên</span>
                 </label>
-                <label class="flex items-center p-3 rounded-lg border border-slate-200 cursor-pointer hover:bg-blue-50 transition-colors">
+                <label class="flex items-center p-3 rounded-lg border border-blue-200 cursor-pointer hover:bg-blue-100 transition-colors bg-white">
                   <input type="radio" name="q4" value="c" class="w-4 h-4 text-blue-600">
-                  <span class="ml-3 text-slate-700">C. Thanh niên tiến bước</span>
+                  <span class="ml-3 text-blue-800">C. Thanh niên tiến bước</span>
                 </label>
               </div>
             </div>
 
             <!-- Q5 -->
-            <div class="bg-slate-50 p-5 rounded-xl border border-slate-100">
-              <p class="font-medium text-slate-800 mb-3">5. Màu áo truyền thống của thanh niên Việt Nam là màu gì?</p>
+            <div class="bg-blue-50/50 p-5 rounded-xl border border-blue-100">
+              <p class="font-medium text-blue-900 mb-3">5. Màu áo truyền thống của thanh niên Việt Nam là màu gì?</p>
               <div class="space-y-2">
-                <label class="flex items-center p-3 rounded-lg border border-slate-200 cursor-pointer hover:bg-blue-50 transition-colors">
+                <label class="flex items-center p-3 rounded-lg border border-blue-200 cursor-pointer hover:bg-blue-100 transition-colors bg-white">
                   <input type="radio" name="q5" value="a" class="w-4 h-4 text-blue-600">
-                  <span class="ml-3 text-slate-700">A. Xanh dương</span>
+                  <span class="ml-3 text-blue-800">A. Xanh dương</span>
                 </label>
-                <label class="flex items-center p-3 rounded-lg border border-slate-200 cursor-pointer hover:bg-blue-50 transition-colors">
+                <label class="flex items-center p-3 rounded-lg border border-blue-200 cursor-pointer hover:bg-blue-100 transition-colors bg-white">
                   <input type="radio" name="q5" value="b" class="w-4 h-4 text-blue-600">
-                  <span class="ml-3 text-slate-700">B. Xanh lá</span>
+                  <span class="ml-3 text-blue-800">B. Xanh lá</span>
                 </label>
-                <label class="flex items-center p-3 rounded-lg border border-slate-200 cursor-pointer hover:bg-blue-50 transition-colors">
+                <label class="flex items-center p-3 rounded-lg border border-blue-200 cursor-pointer hover:bg-blue-100 transition-colors bg-white">
                   <input type="radio" name="q5" value="c" class="w-4 h-4 text-blue-600">
-                  <span class="ml-3 text-slate-700">C. Đỏ</span>
+                  <span class="ml-3 text-blue-800">C. Đỏ</span>
                 </label>
               </div>
             </div>
 
             <!-- Q6 -->
-            <div class="bg-slate-50 p-5 rounded-xl border border-slate-100">
-              <p class="font-medium text-slate-800 mb-3">6. Thanh niên khi tham gia hoạt động tập thể cần nhất điều gì?</p>
+            <div class="bg-blue-50/50 p-5 rounded-xl border border-blue-100">
+              <p class="font-medium text-blue-900 mb-3">6. Thanh niên khi tham gia hoạt động tập thể cần nhất điều gì?</p>
               <div class="space-y-2">
-                <label class="flex items-center p-3 rounded-lg border border-slate-200 cursor-pointer hover:bg-blue-50 transition-colors">
+                <label class="flex items-center p-3 rounded-lg border border-blue-200 cursor-pointer hover:bg-blue-100 transition-colors bg-white">
                   <input type="radio" name="q6" value="a" class="w-4 h-4 text-blue-600">
-                  <span class="ml-3 text-slate-700">A. Nhiệt huyết</span>
+                  <span class="ml-3 text-blue-800">A. Nhiệt huyết</span>
                 </label>
-                <label class="flex items-center p-3 rounded-lg border border-slate-200 cursor-pointer hover:bg-blue-50 transition-colors">
+                <label class="flex items-center p-3 rounded-lg border border-blue-200 cursor-pointer hover:bg-blue-100 transition-colors bg-white">
                   <input type="radio" name="q6" value="b" class="w-4 h-4 text-blue-600">
-                  <span class="ml-3 text-slate-700">B. Tinh thần đoàn kết</span>
+                  <span class="ml-3 text-blue-800">B. Tinh thần đoàn kết</span>
                 </label>
-                <label class="flex items-center p-3 rounded-lg border border-slate-200 cursor-pointer hover:bg-blue-50 transition-colors">
+                <label class="flex items-center p-3 rounded-lg border border-blue-200 cursor-pointer hover:bg-blue-100 transition-colors bg-white">
                   <input type="radio" name="q6" value="c" class="w-4 h-4 text-blue-600">
-                  <span class="ml-3 text-slate-700">C. Cả hai</span>
+                  <span class="ml-3 text-blue-800">C. Cả hai</span>
                 </label>
               </div>
             </div>
@@ -217,22 +212,22 @@
     </div>
 
     <!-- Step 2: Avatar Cropping -->
-    <div id="step2" class="step-container hidden-step bg-white rounded-2xl shadow-sm border border-slate-200 p-6 md:p-8">
+    <div id="step2" class="step-container hidden-step bg-white rounded-2xl shadow-sm border border-blue-200 p-6 md:p-8">
       <div class="flex items-center justify-between mb-6">
-        <h3 class="text-2xl font-bold text-slate-800">Tạo Avatar Kỷ niệm</h3>
-        <button type="button" onclick="goToStep(1)" class="text-slate-500 hover:text-slate-700 flex items-center text-sm font-medium transition-colors">
+        <h3 class="text-2xl font-bold text-blue-900">Tạo Avatar Kỷ niệm</h3>
+        <button type="button" onclick="goToStep(1)" class="text-blue-500 hover:text-blue-700 flex items-center text-sm font-medium transition-colors">
           <i data-lucide="arrow-left" class="w-4 h-4 mr-1"></i> Quay lại
         </button>
       </div>
 
       <div class="mb-6">
-        <label class="block text-sm font-medium text-slate-700 mb-2">Chọn ảnh chân dung của bạn</label>
+        <label class="block text-sm font-medium text-blue-800 mb-2">Chọn ảnh chân dung của bạn</label>
         <div class="flex items-center justify-center w-full">
-          <label class="flex flex-col items-center justify-center w-full h-32 border-2 border-slate-300 border-dashed rounded-xl cursor-pointer bg-slate-50 hover:bg-slate-100 transition-colors">
+          <label class="flex flex-col items-center justify-center w-full h-32 border-2 border-blue-300 border-dashed rounded-xl cursor-pointer bg-blue-50/50 hover:bg-blue-100 transition-colors">
             <div class="flex flex-col items-center justify-center pt-5 pb-6">
-              <i data-lucide="upload-cloud" class="w-8 h-8 text-slate-500 mb-2"></i>
-              <p class="text-sm text-slate-500"><span class="font-semibold">Nhấn để tải ảnh lên</span> hoặc kéo thả vào đây</p>
-              <p class="text-xs text-slate-400 mt-1">PNG, JPG (Tối đa 5MB)</p>
+              <i data-lucide="upload-cloud" class="w-8 h-8 text-blue-500 mb-2"></i>
+              <p class="text-sm text-blue-700"><span class="font-semibold">Nhấn để tải ảnh lên</span> hoặc kéo thả vào đây</p>
+              <p class="text-xs text-blue-500 mt-1">PNG, JPG (Tối đa 5MB)</p>
             </div>
             <input id="imageInput" type="file" class="hidden" accept="image/*" />
           </label>
@@ -240,26 +235,26 @@
       </div>
 
       <div id="cropper-container" class="hidden mb-6">
-        <p class="text-sm font-medium text-slate-700 mb-2">Căn chỉnh ảnh của bạn:</p>
-        <div class="relative w-full h-64 md:h-96 bg-slate-900 rounded-xl overflow-hidden">
+        <p class="text-sm font-medium text-blue-800 mb-2">Căn chỉnh ảnh của bạn:</p>
+        <div class="relative w-full h-64 md:h-96 bg-blue-950 rounded-xl overflow-hidden shadow-inner">
           <img id="image-to-crop" src="" alt="Picture" class="max-w-full block">
         </div>
       </div>
 
-      <button id="generate-btn" disabled class="w-full bg-blue-600 disabled:bg-slate-300 disabled:cursor-not-allowed hover:bg-blue-700 text-white font-bold py-4 px-6 rounded-xl shadow-md hover:shadow-lg transition-all flex items-center justify-center text-lg">
+      <button id="generate-btn" disabled class="w-full bg-blue-600 disabled:bg-blue-300 disabled:cursor-not-allowed hover:bg-blue-700 text-white font-bold py-4 px-6 rounded-xl shadow-md hover:shadow-lg transition-all flex items-center justify-center text-lg">
         <i data-lucide="image" class="mr-2 w-5 h-5"></i> Tạo Avatar ngay
       </button>
     </div>
 
     <!-- Step 3: Result -->
-    <div id="step3" class="step-container hidden-step bg-white rounded-2xl shadow-sm border border-slate-200 p-6 md:p-8 text-center">
-      <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-        <i data-lucide="check-circle" class="w-8 h-8 text-green-600"></i>
+    <div id="step3" class="step-container hidden-step bg-white rounded-2xl shadow-sm border border-blue-200 p-6 md:p-8 text-center">
+      <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+        <i data-lucide="check-circle" class="w-8 h-8 text-blue-600"></i>
       </div>
-      <h3 class="text-2xl font-bold text-slate-800 mb-2">Chúc mừng bạn!</h3>
-      <p class="text-slate-600 mb-8">Bạn đã hoàn thành khảo sát và tạo Avatar thành công.</p>
+      <h3 class="text-2xl font-bold text-blue-900 mb-2">Chúc mừng bạn!</h3>
+      <p class="text-blue-700 mb-8">Bạn đã hoàn thành khảo sát và tạo Avatar thành công.</p>
 
-      <div class="max-w-sm mx-auto mb-8 rounded-2xl overflow-hidden shadow-lg border border-slate-200">
+      <div class="max-w-sm mx-auto mb-8 rounded-2xl overflow-hidden shadow-lg border border-blue-200">
         <img id="final-result" src="" alt="Avatar Kỷ niệm" class="w-full h-auto" />
       </div>
 
@@ -267,7 +262,7 @@
         <button onclick="downloadAvatar()" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-xl shadow-md hover:shadow-lg transition-all flex items-center justify-center">
           <i data-lucide="download" class="mr-2 w-5 h-5"></i> Tải ảnh về máy
         </button>
-        <button onclick="goToStep(1)" class="flex-1 bg-white hover:bg-slate-50 text-slate-700 font-bold py-3 px-6 rounded-xl border border-slate-300 shadow-sm transition-all flex items-center justify-center">
+        <button onclick="goToStep(1)" class="flex-1 bg-blue-50 hover:bg-blue-100 text-blue-700 font-bold py-3 px-6 rounded-xl border border-blue-200 shadow-sm transition-all flex items-center justify-center">
           <i data-lucide="refresh-cw" class="mr-2 w-5 h-5"></i> Làm lại từ đầu
         </button>
       </div>
