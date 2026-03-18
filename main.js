@@ -65,7 +65,6 @@ quizForm.addEventListener('submit', (e) => {
   e.preventDefault();
   
   const fullName = document.getElementById('fullName').value.trim();
-  const className = document.getElementById('className').value.trim();
   const email = document.getElementById('email').value.trim();
   
   const q1 = document.querySelector('input[name="q1"]:checked')?.value;
@@ -75,7 +74,7 @@ quizForm.addEventListener('submit', (e) => {
   const q5 = document.querySelector('input[name="q5"]:checked')?.value;
   const q6 = document.querySelector('input[name="q6"]:checked')?.value;
 
-  if (!fullName || !className || !email) {
+  if (!fullName || !email) {
     showError('Vui lòng điền đầy đủ thông tin cá nhân.');
     return;
   }
@@ -102,25 +101,19 @@ quizForm.addEventListener('submit', (e) => {
 // =====================================================================
 const CONFIG = {
   avatar: {
-    x: 240,      // Vị trí X của avatar (từ trái sang)
-    y: 240,      // Vị trí Y của avatar (từ trên xuống)
-    width: 600,  // Chiều rộng của avatar trên phôi
-    height: 600, // Chiều cao của avatar trên phôi
+    x: 35,       // Vị trí X của avatar (từ trái sang)
+    y: 300,      // Vị trí Y của avatar (từ trên xuống)
+    width: 270,  // Chiều rộng của avatar trên phôi
+    height: 270, // Chiều cao của avatar trên phôi
     // NẾU PHÔI CỦA BẠN LÀ FILE PNG CÓ LỖ TRONG SUỐT Ở GIỮA -> Đổi thành true
     // NẾU PHÔI CỦA BẠN LÀ FILE JPG BÌNH THƯỜNG -> Để là false
     drawBehind: true 
   },
   name: {
-    x: 540,      // Vị trí X của Tên (540 là ở giữa ảnh 1080)
-    y: 880,      // Vị trí Y của Tên (từ trên xuống)
-    font: "bold 48px Arial",
-    color: "#ffffff"
-  },
-  className: {
-    x: 540,      // Vị trí X của Lớp
-    y: 950,      // Vị trí Y của Lớp
+    x: 340,      // Vị trí X của Tên (bắt đầu từ lề trái của dòng kẻ chấm)
+    y: 415,      // Vị trí Y của Tên (nằm trên dòng kẻ chấm)
     font: "bold 36px Arial",
-    color: "#facc15" // Màu vàng
+    color: "#c21b17" // Màu đỏ đồng bộ với chữ "Chúc Mừng Kỷ Niệm"
   }
 };
 
@@ -210,30 +203,14 @@ generateBtn.addEventListener('click', () => {
       // Thay đổi từ "center" sang "left" để chữ bắt đầu từ một điểm cố định
       ctx.textAlign = "left"; 
       ctx.textBaseline = "middle";
-      ctx.lineWidth = 4;
-      ctx.strokeStyle = "#000000";
+      ctx.lineWidth = 5;
+      ctx.strokeStyle = "#ffffff"; // Viền trắng giúp chữ nổi bật hơn
       
       // Thêm chữ "Thân tặng đồng chí " vào trước tên
       const textToDraw = fullName.toUpperCase();
       
       ctx.strokeText(textToDraw, CONFIG.name.x, CONFIG.name.y);
       ctx.fillText(textToDraw, CONFIG.name.x, CONFIG.name.y);
-    }
-
-    // Vẽ Lớp/Chi đoàn
-    const className = document.getElementById('className').value.trim();
-    if (className) {
-      ctx.font = CONFIG.className.font;
-      ctx.fillStyle = CONFIG.className.color;
-      
-      // Tương tự, căn trái cho Lớp/Chi đoàn
-      ctx.textAlign = "left";
-      ctx.textBaseline = "middle";
-      ctx.lineWidth = 4;
-      ctx.strokeStyle = "#000000";
-      
-      ctx.strokeText(className, CONFIG.className.x, CONFIG.className.y);
-      ctx.fillText(className, CONFIG.className.x, CONFIG.className.y);
     }
 
     // Set result

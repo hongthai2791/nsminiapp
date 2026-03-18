@@ -35,9 +35,9 @@
   <!-- Header -->
   <header class="bg-blue-600 text-white py-4 shadow-md sticky top-0 z-10">
     <div class="max-w-3xl mx-auto px-4 flex items-center justify-center">
-      <img src="https://upload.wikimedia.org/wikipedia/vi/thumb/0/07/Huy_hi%E1%BB%87u_%C4%90o%C3%A0n_Thanh_ni%C3%AAn_C%E1%BB%99ng_s%E1%BA%A3n_H%E1%BB%93_Ch%C3%AD_Minh.svg/1200px-Huy_hi%E1%BB%87u_%C4%90o%C3%A0n_Thanh_ni%C3%AAn_C%E1%BB%99ng_s%E1%BA%A3n_H%E1%BB%93_Ch%C3%AD_Minh.svg.png" alt="Logo Đoàn" class="h-10 w-10 mr-3 object-contain" />
+      <img src="./logo.png" alt="Logo Nguyễn Siêu" class="h-12 w-12 mr-3 object-contain bg-white rounded-full p-1" onerror="this.src='https://upload.wikimedia.org/wikipedia/vi/thumb/0/07/Huy_hi%E1%BB%87u_%C4%90o%C3%A0n_Thanh_ni%C3%AAn_C%E1%BB%99ng_s%E1%BA%A3n_H%E1%BB%93_Ch%C3%AD_Minh.svg/1200px-Huy_hi%E1%BB%87u_%C4%90o%C3%A0n_Thanh_ni%C3%AAn_C%E1%BB%99ng_s%E1%BA%A3n_H%E1%BB%93_Ch%C3%AD_Minh.svg.png'" />
       <h1 class="text-xl md:text-2xl font-bold text-center uppercase tracking-wide">
-        Kỷ niệm 95 năm thành lập Đoàn
+        KỶ NIỆM 95 THÀNH LẬP ĐOÀN
       </h1>
     </div>
   </header>
@@ -47,35 +47,23 @@
     <div id="step1" class="step-container active-step space-y-8">
       <!-- Banner -->
       <div class="bg-white rounded-2xl shadow-sm overflow-hidden border border-slate-200">
-        <div class="h-48 bg-gradient-to-r from-blue-600 to-blue-400 relative flex items-center justify-center">
-          <div class="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
+        <div class="h-48 relative flex items-center justify-center bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1490750967868-88cb44cb2753?q=80&w=2070&auto=format&fit=crop');">
+          <div class="absolute inset-0 bg-blue-900/40"></div>
           <div class="text-center text-white z-10 px-4">
-            <h2 class="text-3xl md:text-4xl font-black uppercase mb-2 drop-shadow-md">Tự hào tuổi trẻ Việt Nam</h2>
-            <p class="text-lg md:text-xl font-medium drop-shadow-sm">26/03/1931 - 26/03/2026</p>
+            <h2 class="text-3xl md:text-4xl font-black uppercase mb-2 drop-shadow-lg">Tự hào tuổi trẻ Nguyễn Siêu</h2>
           </div>
         </div>
         <div class="p-6 md:p-8">
           <h3 class="text-xl font-bold text-blue-800 mb-4">Lời ngỏ</h3>
-          <p class="text-slate-600 leading-relaxed mb-4">
-            Chào mừng kỷ niệm 95 năm ngày thành lập Đoàn TNCS Hồ Chí Minh. Hãy cùng tham gia trả lời các câu hỏi tìm hiểu về Đoàn và tạo ngay cho mình một chiếc Avatar thật "chất" nhé!
+          <p class="text-slate-600 leading-relaxed">
+            Các bạn đoàn viên thân mến. Hãy cùng tham gia trả lời các câu hỏi tìm hiểu và nhận món quà bất ngờ từ BCH Đoàn trường THPT Nguyễn Siêu nhé
           </p>
-          <div class="bg-blue-50 p-4 rounded-xl border border-blue-100">
-            <h4 class="font-semibold text-blue-800 mb-2 flex items-center">
-              <i data-lucide="alert-circle" class="w-5 h-5 mr-2"></i> Thể lệ tham gia
-            </h4>
-            <ul class="list-disc list-inside text-sm text-blue-700 space-y-1">
-              <li>Điền đầy đủ thông tin cá nhân.</li>
-              <li>Trả lời đúng các câu hỏi trắc nghiệm.</li>
-              <li>Tải ảnh chân dung rõ nét (tối đa 5MB).</li>
-              <li>Nhận ảnh và chia sẻ lên mạng xã hội.</li>
-            </ul>
-          </div>
         </div>
       </div>
 
       <!-- Form -->
       <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 md:p-8">
-        <h3 class="text-2xl font-bold text-slate-800 mb-6 border-b pb-4">Thông tin & Khảo sát</h3>
+        <h3 class="text-2xl font-bold text-slate-800 mb-6 border-b pb-4">Thông tin người tham gia</h3>
         
         <div id="error-message" class="hidden mb-6 p-4 bg-red-50 text-red-600 rounded-xl border border-red-200 flex items-start">
           <i data-lucide="alert-circle" class="w-5 h-5 mr-2 flex-shrink-0 mt-0.5"></i>
@@ -94,10 +82,6 @@
                 <input type="text" id="fullName" required class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all" placeholder="Nguyễn Văn A">
               </div>
               <div>
-                <label class="block text-sm font-medium text-slate-700 mb-1">Lớp/Chi đoàn *</label>
-                <input type="text" id="className" required class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all" placeholder="Chi đoàn 12A1">
-              </div>
-              <div class="md:col-span-2">
                 <label class="block text-sm font-medium text-slate-700 mb-1">Email (để nhận ảnh đích) *</label>
                 <input type="email" id="email" required class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all" placeholder="nguyenvana@example.com">
               </div>
@@ -225,8 +209,8 @@
             </div>
           </div>
 
-          <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-6 rounded-xl shadow-md hover:shadow-lg transition-all flex items-center justify-center text-lg">
-            Tiếp tục tạo Avatar <i data-lucide="chevron-right" class="ml-2 w-5 h-5"></i>
+          <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-6 rounded-xl shadow-md hover:shadow-lg transition-all flex items-center justify-center text-base md:text-lg text-center leading-tight">
+            Bạn hãy tải lên bức ảnh chân dung đẹp nhất của mình để nhận món quà bất ngờ từ BTC nhé <i data-lucide="chevron-right" class="ml-2 w-5 h-5 flex-shrink-0"></i>
           </button>
         </form>
       </div>
