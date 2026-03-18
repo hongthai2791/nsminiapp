@@ -223,7 +223,7 @@ generateBtn.addEventListener('click', () => {
 
   // Load template
   const templateImg = new Image();
-  templateImg.src = './template.png'; // Nếu dùng PNG, hãy đổi tên file này thành template.png
+  templateImg.src = './public/template.png'; // Nếu dùng PNG, hãy đổi tên file này thành template.png
   templateImg.crossOrigin = 'anonymous';
 
   templateImg.onload = () => {
@@ -272,7 +272,7 @@ generateBtn.addEventListener('click', () => {
   };
 
   templateImg.onerror = () => {
-    alert('Không tìm thấy phôi thiệp (template.jpg). Vui lòng đảm bảo file template.jpg nằm cùng thư mục.');
+    alert('Không tìm thấy phôi thiệp (template.png). Vui lòng đảm bảo file template.png nằm trong thư mục public.');
     generateBtn.innerHTML = originalText;
     generateBtn.disabled = false;
     if (typeof lucide !== 'undefined') lucide.createIcons();
