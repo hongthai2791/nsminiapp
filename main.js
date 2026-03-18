@@ -228,17 +228,17 @@ generateBtn.addEventListener('click', () => {
 
   templateImg.onload = () => {
     const finalCanvas = document.createElement('canvas');
-    finalCanvas.width = 1080;
-    finalCanvas.height = 1080;
+    finalCanvas.width = 1684;
+    finalCanvas.height = 1684;
     const ctx = finalCanvas.getContext('2d');
 
     if (CONFIG.avatar.drawBehind) {
       // Vẽ avatar trước, phôi đè lên sau (Giúp avatar không bị trồi ra khỏi khung)
       ctx.drawImage(croppedCanvas, CONFIG.avatar.x, CONFIG.avatar.y, CONFIG.avatar.width, CONFIG.avatar.height);
-      ctx.drawImage(templateImg, 0, 0, 1080, 1080);
+      ctx.drawImage(templateImg, 0, 0, 1684, 2528);
     } else {
       // Vẽ phôi trước, avatar đè lên sau
-      ctx.drawImage(templateImg, 0, 0, 1080, 1080);
+      ctx.drawImage(templateImg, 0, 0, 1684, 2528);
       ctx.drawImage(croppedCanvas, CONFIG.avatar.x, CONFIG.avatar.y, CONFIG.avatar.width, CONFIG.avatar.height);
     }
 
