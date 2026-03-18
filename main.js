@@ -150,7 +150,7 @@ quizForm.addEventListener('submit', async (e) => {
 const CONFIG = {
   avatar: {
     x: 84,       // Vị trí X của avatar (từ trái sang)
-    y: 902,      // Vị trí Y của avatar (từ trên xuống)
+    y: 802,      // Vị trí Y của avatar (từ trên xuống)
     width: 520,  // Chiều rộng của avatar trên phôi
     height: 529, // Chiều cao của avatar trên phôi
     // NẾU PHÔI CỦA BẠN LÀ FILE PNG CÓ LỖ TRONG SUỐT Ở GIỮA -> Đổi thành true
@@ -158,8 +158,8 @@ const CONFIG = {
     drawBehind: true 
   },
   name: {
-    x: 590,      // Vị trí X của Tên (bắt đầu từ lề trái của dòng kẻ chấm)
-    y: 1031,      // Vị trí Y của Tên (nằm trên dòng kẻ chấm)
+    x: 1090,      // Vị trí X của Tên (bắt đầu từ lề trái của dòng kẻ chấm)
+    y: 1051,      // Vị trí Y của Tên (nằm trên dòng kẻ chấm)
     font: "bold 56px Arial",
     color: "#b3251b" // Màu đỏ đồng bộ với chữ "Chúc Mừng Kỷ Niệm"
   }
