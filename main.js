@@ -1,6 +1,9 @@
 // Initialize Lucide icons
 lucide.createIcons();
 
+// ĐIỀN LINK GOOGLE APPS SCRIPT CỦA BẠN VÀO ĐÂY
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwkK45yxJPbWQVaBJmovNlFJ06afuQ8jjtmr7e4Tw-zEOtHrQPmYpkiI6_7ckWyU3aawQ/exec'; // Thay bằng link thật của bạn
+
 // State
 let currentStep = 1;
 let cropper = null;
@@ -61,7 +64,7 @@ function showError(msg) {
 }
 
 // Step 1: Form Submission
-quizForm.addEventListener('submit', (e) => {
+quizForm.addEventListener('submit', async (e) => {
   e.preventDefault();
   
   const fullName = document.getElementById('fullName').value.trim();
@@ -90,9 +93,53 @@ quizForm.addEventListener('submit', (e) => {
     return;
   }
 
-  // Success
+  // Success - Lưu vào Google Sheet
   errorBox.classList.add('hidden');
-  goToStep(2);
+  
+  const submitBtn = quizForm.querySelector('button[type="submit"]');
+  const originalBtnText = submitBtn.innerHTML;
+  
+  try {
+    submitBtn.innerHTML = '<i data-lucide="loader-2" class="w-5 h-5 mr-2 animate-spin inline-block"></i> Đang lưu thông tin...';
+    submitBtn.disabled = true;
+    submitBtn.classList.add('opacity-75', 'cursor-not-allowed');
+    
+    // Gửi dữ liệu lên Google Sheet
+    if (GOOGLE_SCRIPT_URL && GOOGLE_SCRIPT_URL.includes('script.google.com')) {
+      const payload = {
+        timestamp: new Date().toLocaleString('vi-VN'),
+        fullName: fullName,
+        email: email,
+        q1: q1, q2: q2, q3: q3, q4: q4, q5: q5, q6: q6
+      };
+      
+      await fetch(GOOGLE_SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors', // Bỏ qua lỗi CORS
+        headers: {
+          'Content-Type': 'text/plain;charset=utf-8',
+        },
+        body: JSON.stringify(payload)
+      });
+    } else {
+      console.warn("Chưa cấu hình GOOGLE_SCRIPT_URL. Bỏ qua bước lưu Google Sheet.");
+    }
+  } catch (error) {
+    console.error('Lỗi khi lưu vào Google Sheet:', error);
+    // Vẫn cho phép đi tiếp dù lỗi lưu sheet
+  } finally {
+    // Khôi phục nút
+    submitBtn.innerHTML = originalBtnText;
+    submitBtn.disabled = false;
+    submitBtn.classList.remove('opacity-75', 'cursor-not-allowed');
+    
+    // Chuyển sang bước 2
+    goToStep(2);
+    // Re-initialize lucide icons if needed
+    if (window.lucide) {
+      window.lucide.createIcons();
+    }
+  }
 });
 
 // =====================================================================
