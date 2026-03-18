@@ -149,19 +149,19 @@ quizForm.addEventListener('submit', async (e) => {
 // =====================================================================
 const CONFIG = {
   avatar: {
-    x: 54,       // Vị trí X của avatar (từ trái sang)
-    y: 702,      // Vị trí Y của avatar (từ trên xuống)
-    width: 421,  // Chiều rộng của avatar trên phôi
-    height: 421, // Chiều cao của avatar trên phôi
+    x: 84,       // Vị trí X của avatar (từ trái sang)
+    y: 1002,      // Vị trí Y của avatar (từ trên xuống)
+    width: 520,  // Chiều rộng của avatar trên phôi
+    height: 529, // Chiều cao của avatar trên phôi
     // NẾU PHÔI CỦA BẠN LÀ FILE PNG CÓ LỖ TRONG SUỐT Ở GIỮA -> Đổi thành true
     // NẾU PHÔI CỦA BẠN LÀ FILE JPG BÌNH THƯỜNG -> Để là false
     drawBehind: true 
   },
   name: {
-    x: 530,      // Vị trí X của Tên (bắt đầu từ lề trái của dòng kẻ chấm)
-    y: 971,      // Vị trí Y của Tên (nằm trên dòng kẻ chấm)
+    x: 560,      // Vị trí X của Tên (bắt đầu từ lề trái của dòng kẻ chấm)
+    y: 1001,      // Vị trí Y của Tên (nằm trên dòng kẻ chấm)
     font: "bold 56px Arial",
-    color: "#c21b17" // Màu đỏ đồng bộ với chữ "Chúc Mừng Kỷ Niệm"
+    color: "#b3251b" // Màu đỏ đồng bộ với chữ "Chúc Mừng Kỷ Niệm"
   }
 };
 
